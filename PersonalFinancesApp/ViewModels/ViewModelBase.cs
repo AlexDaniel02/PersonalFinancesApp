@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonalFinancesApp.ViewModels
 {
-    public class ViewModelBase
+    public class ViewModelBase :INotifyPropertyChanged
     {
             public event PropertyChangedEventHandler PropertyChanged;
             public void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -54,10 +54,10 @@ namespace PersonalFinancesApp.ViewModels
             set
             {
                 _selectedMonth = value;
+                OnPropertyChanged();
                 CalculateMonthSpent();
                 CalculateMonthReceived();
                 CalculateMonthSaved();
-                OnPropertyChanged();
             }
         }
 
@@ -193,6 +193,7 @@ namespace PersonalFinancesApp.ViewModels
                income.Date.Month == Months.IndexOf(SelectedMonth) + 1).Sum(income => income.Amount);
 
         }
+
         public void CalculateMonthSaved()
         {
             MonthSaved = MonthReceived - MonthSpent;
