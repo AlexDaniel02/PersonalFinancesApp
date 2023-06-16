@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="PersonalFinancesApp.Views.LoginWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PersonalFinancesApp.Views"
+             xmlns:viewModels="clr-namespace:PersonalFinancesApp.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModels:LoginViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Username:" Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" Text="{Binding Username}"/>
+
+        <Label Content="Password:" Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" />
+        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" PasswordChanged="PasswordBox_PasswordChanged"/>
+        <StackPanel Orientation="Horizontal"  Grid.Row="3" Grid.Column="1">
+            <Button Content="Login" Command="{Binding LoginCommand}" Margin="10" Height="30" Width="70" HorizontalAlignment="Center" Background="SlateBlue"/>
+            <Button Content="Register" Command="{Binding RegisterCommand}" Margin="10" Height="30" Width="70" HorizontalAlignment="Center" Background="SlateBlue"/>
+        </StackPanel>
+
+
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Grid>
+</UserControl>

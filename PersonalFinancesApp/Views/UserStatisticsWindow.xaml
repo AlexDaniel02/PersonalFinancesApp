@@ -1,0 +1,124 @@
+﻿    <Window x:Class="PersonalFinancesApp.Views.UserStatisticsWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:viewModels="clr-namespace:PersonalFinancesApp.ViewModels"
+            xmlns:local="clr-namespace:PersonalFinancesApp.Views"
+            Height="1280" Width="720"
+            FontFamily="Arial"
+            Background="Lavender"
+            mc:Ignorable="d">   
+    <Window.DataContext>
+        <viewModels:UserStatisticsViewModel/>
+    </Window.DataContext>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Money saved in a period:" FontWeight="Bold" FontSize="16" Margin="0,0,0,5"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Start Date:" VerticalAlignment="Center" Width="80"/>
+            <DatePicker Grid.Column="1" SelectedDate="{Binding StartDate}" Margin="10,0,10,0" Width="150"/>
+            <TextBlock Grid.Column="2" Text="End Date:" VerticalAlignment="Center" Margin="10,0,0,0" Width="80"/>
+            <DatePicker Grid.Column="3" SelectedDate="{Binding EndDate}" Margin="10,0,10,0" Width="150"/>
+            <Button Grid.Column="4" Content="Calculate" Command="{Binding CalculateByPeriodCommand}" Margin="10,0,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money Spent:" FontSize="16" Margin="0,10,0,0" Width="100"/>
+            <TextBlock Grid.Column="1"  Text="{Binding MoneySpent}" Margin="15,10,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money Received:" FontSize="16" Margin="0,10,0,0" Width="150"/>
+            <TextBlock Grid.Column="1"  Text="{Binding MoneyReceived}" Margin="15,10,0,0" Width="100"/>
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money Saved:" FontSize="16" Margin="0,10,0,100" Width="150"/>
+            <TextBlock Grid.Column="1"  Text="{Binding MoneySaved}" Margin="15,10,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Savings in a month:" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" Width="150"/>
+            <ComboBox Grid.Column="1" SelectedItem="{Binding SelectedMonth}" ItemsSource="{Binding Months}" Margin="10,10,10,0" Width="150"/>
+        </Grid>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money spent:" FontSize="16" Margin="0,10,0,0" Width="130"/>
+            <TextBlock Grid.Column="1" Text="{Binding MonthSpent,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,10,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money received:" FontSize="16" Margin="0,10,0,0" Width="130"/>
+            <TextBlock Grid.Column="1" Text="{Binding MonthReceived, Mode=TwoWay}" Margin="0,10,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money saved:" FontSize="16" Margin="0,10,0,100" Width="130"/>
+            <TextBlock Grid.Column="1" Text="{Binding MonthSaved, Mode=TwoWay}" Margin="0,10,0,0" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Spendings on a category:" FontWeight="Bold" FontSize="16" Margin="0,10,0,0" Width="200"/>
+            <ComboBox Grid.Column="1" Width="120" Height="20" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Margin="0,10,0,0"/>
+        </Grid>
+        <Grid Grid.Row="11">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Money Spent:" FontSize="16" Margin="0,10,0,0" Width="130"/>
+            <TextBlock Grid.Column="1" Text="{Binding CategorySpent }" Margin="0,10,0,0" Width="100"/>
+        </Grid>
+    </Grid>
+</Window>
