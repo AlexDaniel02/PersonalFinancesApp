@@ -6,40 +6,46 @@
              xmlns:local="clr-namespace:PersonalFinancesApp.Views"
              xmlns:viewModels="clr-namespace:PersonalFinancesApp.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="300" d:DesignWidth="450">
     <UserControl.DataContext>
         <viewModels:LoginViewModel/>
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Username:" Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" Text="{Binding Username}"/>
+        <Label Content="Username:" Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" 
+               FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" 
+                 Text="{Binding Username}" FontSize="20" Height="40"/>
 
-        <Label Content="Password:" Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" />
-        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" PasswordChanged="PasswordBox_PasswordChanged"/>
-        <StackPanel Orientation="Horizontal"  Grid.Row="3" Grid.Column="1">
-            <Button Content="Login" Command="{Binding LoginCommand}" Margin="10" Height="30" Width="70" HorizontalAlignment="Center" Background="SlateBlue"/>
-            <Button Content="Register" Command="{Binding RegisterCommand}" Margin="10" Height="30" Width="70" HorizontalAlignment="Center" Background="SlateBlue"/>
+        <Label Content="Password:" Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" 
+               FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" 
+                     PasswordChanged="PasswordBox_PasswordChanged" FontSize="20" Height="40"/>
+        <StackPanel Orientation="Horizontal"  Grid.Row="3" Grid.Column="1" Margin="0,50,0,0">
+            <Button Content="Login" Command="{Binding LoginCommand}" Margin="10" Height="50" Width="100" 
+                    HorizontalAlignment="Center" Background="SlateBlue" FontSize="20" FontWeight="Bold"/>
+            <Button Content="Register" Command="{Binding RegisterCommand}" Margin="10" Height="50" Width="100" 
+                    HorizontalAlignment="Center" Background="SlateBlue" FontSize="20" FontWeight="Bold"/>
         </StackPanel>
-
 
         <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         </Grid>
     </Grid>
