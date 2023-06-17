@@ -87,6 +87,7 @@ namespace PersonalFinancesApp.ViewModels
             DeleteExpenseCommand = new RelayCommand(DeleteExpense);
             Expenses = new(App.ExpenseBLL.GetAllExpenses().Where(expense => expense.User == User));
             Categories = new(App.CategoryBLL.GetAllCategories());
+            Date = DateTime.Now;
         }
         public void AddExpense()
         {
@@ -97,14 +98,14 @@ namespace PersonalFinancesApp.ViewModels
                 Amount = Amount,
                 User = User,
                 Category = Category,
-                Date = Date.ToUniversalTime()
+                Date = Date.ToUniversalTime().AddDays(Date.Day - Date.ToUniversalTime().Day)
             };
             App.ExpenseBLL.AddExpense(newExpense);
             Refresh();
         }
         public void UpdateExpense()
         {
-            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description) || Amount == 0 || Category==null)
+            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description) || Amount == 0 || Category == null)
             {
                 MessageBox.Show("Please fill all the fields.");
                 return;
@@ -112,9 +113,9 @@ namespace PersonalFinancesApp.ViewModels
             if (SelectedExpense != null)
             {
                 SelectedExpense.Name = Name;
-                SelectedExpense.Description= Description;
+                SelectedExpense.Description = Description;
                 SelectedExpense.Amount = Amount;
-                SelectedExpense.Date = Date;
+                SelectedExpense.Date = Date.ToUniversalTime().AddDays(Date.Day-Date.ToUniversalTime().Day);
                 SelectedExpense.Category = Category;
                 App.ExpenseBLL.UpdateExpense(SelectedExpense);
                 Refresh();

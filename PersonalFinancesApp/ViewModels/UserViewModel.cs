@@ -27,10 +27,7 @@ namespace PersonalFinancesApp.ViewModels
         public void ShowStatistics()
         {
             UserStatisticsViewModel.User = User;
-            UserStatisticsViewModel viewModel = new UserStatisticsViewModel();
-            UserStatisticsWindow statisticsWindow = new UserStatisticsWindow();
-            statisticsWindow.DataContext = viewModel;
-            statisticsWindow.Show();
+            new UserStatisticsWindow().Show();
         }
         public void ShowExpenses()
         {

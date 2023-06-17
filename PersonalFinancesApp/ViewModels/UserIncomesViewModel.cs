@@ -75,6 +75,7 @@ namespace PersonalFinancesApp.ViewModels
             UpdateIncomeCommand = new RelayCommand(UpdateIncome);
             DeleteIncomeCommand = new RelayCommand(DeleteIncome);
             Incomes = new(App.IncomeBLL.GetAllIncomes().Where(income => income.User == User));
+            Date = DateTime.Now;
         }
         public void AddIncome()
         {
@@ -84,16 +85,16 @@ namespace PersonalFinancesApp.ViewModels
                 Description = Description,
                 Amount = Amount,
                 User = User,
-                Date = Date.ToUniversalTime()
+                Date = Date.ToUniversalTime().AddDays(Date.Day - Date.ToUniversalTime().Day)
             };
             App.IncomeBLL.AddIncome(newIncome);
             Refresh();
         }
         public void UpdateIncome()
         {
-            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description) || Amount == 0)
+            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description) || Amount <= 0)
             {
-                MessageBox.Show("Please fill all the fields.");
+                MessageBox.Show("Please fill all the fields correctly.");
                 return;
             }
             if (SelectedIncome != null)
@@ -101,7 +102,7 @@ namespace PersonalFinancesApp.ViewModels
                 SelectedIncome.Name = Name;
                 SelectedIncome.Description = Description;
                 SelectedIncome.Amount = Amount;
-                SelectedIncome.Date = Date;
+                SelectedIncome.Date = Date.ToUniversalTime().AddDays(Date.Day - Date.ToUniversalTime().Day);
                 App.IncomeBLL.UpdateIncome(SelectedIncome);
                 Refresh();
             }

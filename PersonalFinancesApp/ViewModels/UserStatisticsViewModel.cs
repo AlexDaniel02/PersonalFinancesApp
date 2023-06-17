@@ -153,8 +153,8 @@ namespace PersonalFinancesApp.ViewModels
         public UserStatisticsViewModel()
         {
             CalculateByPeriodCommand = new RelayCommand(CalculatePeriodSavings);
-            StartDate = DateTime.Today;
-            EndDate = DateTime.Today;
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
             Categories = new(App.CategoryBLL.GetAllCategories());
             Months = new List<string> { "January", "February", "March", "April", "May", "June", "July"  , "August", "September", "October", "November", "December" };
         }

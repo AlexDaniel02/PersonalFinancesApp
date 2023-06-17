@@ -42,17 +42,23 @@
             <Label Width="150" FontSize="15">Category:</Label>
             <ComboBox Width="200" SelectedItem="{Binding Category}" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" />
         </StackPanel>
-        <ListView Margin="0,15,0,0" Height="250" ItemsSource="{Binding Expenses}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectedItem="{Binding SelectedExpense}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}" />
-                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.Name}" />
-                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+        <ListView Margin="0,15,0,0" Height="250"  ItemsSource="{Binding Expenses}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectedItem="{Binding SelectedExpense}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}" />
+                        <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.Name}" />
+                    <GridViewColumn Header="Date">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Username" DisplayMemberBinding="{Binding User.Username}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding User.Username}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
     </StackPanel>
 </Window>
