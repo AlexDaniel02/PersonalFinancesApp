@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Background="Lavender"
         FontFamily="Arial"
-        Title="Incomes" Height="450" Width="800">
+        Title="Incomes" Height="550" Width="800">
     <Window.DataContext>
         <viewModels:UserIncomesViewModel/>
     </Window.DataContext>
