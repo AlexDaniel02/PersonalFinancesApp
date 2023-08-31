@@ -18,7 +18,7 @@ To run the Personal Finances App locally, follow these steps:
 2. Set up the database:
 - Create a new PostgreSQL database for the application.
 - Open the `appsettings.json` file in the `PersonalFinancesApp` project.
-- Locate the `AppDbContext.cs` file within the `Data` folder.
+- Locate the `PersonalFinancesDbContext.cs` file within the `Models` folder.
 - In the `OnConfiguring` method, update the connection string to match your PostgreSQL connection details (e.g., server, database, username, password).
 - 
 3. Open the solution in Visual Studio:
